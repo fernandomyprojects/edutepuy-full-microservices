@@ -1,0 +1,4 @@
+Por revisar:
+- Problema al llamar los endpoints son token (Con token valido devuelve 403)
+- Realizar la cobertura de código
+- Aprender como deshabilitar la seguridad por anotación o código
