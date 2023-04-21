@@ -1,0 +1,25 @@
+Register
+POST: http://localhost:9090/api/v1/auth/register
+{
+    "firstname": "Feranndo",
+    "lastname": "Rodriguez",
+    "email": "fernando.jesus@gmail.com",
+    "password": "12345678"
+}
+
+Login
+POST: http://localhost:9090/api/v1/auth/authenticate
+{
+   "email": "fernando.jesus@gmail.com",
+   "password": "12345678"
+}
+
+Demo
+GET: http://localhost:9090/api/v1/demo-controller
+
+
+Swagger
+http://localhost:9090/doc/swagger-ui/index.html
+
+Configuration request/response swagger v3
+https://www.youtube.com/watch?v=A_RWUcTqHBI&t=1395

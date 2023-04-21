@@ -1,0 +1,67 @@
+package com.edutepuy.controllers;
+
+import org.junit.jupiter.api.Test;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
+import org.springframework.boot.test.mock.mockito.MockBean;
+import org.springframework.test.web.servlet.MockMvc;
+import org.springframework.test.web.servlet.MvcResult;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.mockito.Mockito.when;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
+import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
+
+@WebMvcTest(SampleController.class)
+class SampleControllerTest {
+
+    @Autowired
+    private MockMvc mockMvc;
+
+    @MockBean
+    private SampleService sampleService;
+
+    @Test
+    void getTestMessage() throws Exception {
+        when(sampleService.getTestMessage()).thenReturn("Test");
+        MvcResult mvcResult = this.mockMvc.perform(get("/test")).andDo(print()).andExpect(status().is(200)).andReturn();
+        assertEquals("Test", mvcResult.getResponse().getContentAsString());
+    }
+}
+
+
+package com.edutepuy.services;
+
+import org.junit.jupiter.api.Test;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
+
+class SampleServiceTest {
+
+    private final SampleService sampleService = new SampleServiceImpl();
+
+    @Test
+    void testGet() {
+        String message = sampleService.getTestMessage();
+        assertEquals("Test", message);
+    }
+
+    @Test
+    void testBranchValueBelowZero() {
+        int branchValue = sampleService.getBranchValue(-4);
+        assertEquals(-1, branchValue);
+    }
+
+    @Test
+    void testBranchValueIsZero() {
+        int branchValue = sampleService.getBranchValue(0);
+        assertEquals(0, branchValue);
+    }
+
+    @Test
+    void testBranchValueAboveZero() {
+        int branchValue = sampleService.getBranchValue(10);
+        assertEquals(1, branchValue);
+    }
+}

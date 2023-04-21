@@ -1,0 +1,11 @@
+//MAC
+datasource:
+    url: jdbc:postgresql://localhost:5433/tepuyrest
+    username: postgres
+    password: postgres
+
+//WINDOWS
+datasource:
+    url: jdbc:postgresql://localhost:5432/tepuyrest
+    username: postgres
+    password: postgresql
